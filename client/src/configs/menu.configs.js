@@ -56,7 +56,7 @@ const user = [
         icon: <LockResetOutlinedIcon/>,
         state: "password.update"
     },
-]
+];
 
 const menuConfigs = { main, user }
 

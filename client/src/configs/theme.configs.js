@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 import { colors } from "@mui/material";
-import { create } from "@mui/material/styles/createTransitions";
 
 export const themeModes = {
     dark: "dark",
@@ -9,7 +8,7 @@ export const themeModes = {
 
 const themeConfigs = {
     custom: ({mode}) => {
-        const customPallete = mode === themeModes.dark ? { 
+        const customPalete = mode === themeModes.dark ? { 
             primary: {
                 main: "#ff0000",
                 contrastText: "#ffffff"
@@ -37,7 +36,7 @@ const themeConfigs = {
         return createTheme({
             palette: {
                 mode,
-                ...customPallete
+                ...customPalete
             },
             components: {
                 MuiButton: {
