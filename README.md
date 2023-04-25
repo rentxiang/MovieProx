@@ -25,3 +25,8 @@ What are the technologies in this project?
     - Jsonwebtoken
     - Mongoose
     - Axios
+
+# Screenshots
+
+![Home page](./MoviePro1.png)
+![Watch Now](./MoviePro2.png)
