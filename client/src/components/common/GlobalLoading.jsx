@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react'
 import { useSelector } from "react-redux";
-import { Paper, Box, LinearProgress, Toolbar} from "@mui/material"
-import { useState } from 'react';
+import { Paper, Box, LinearProgress, Toolbar } from "@mui/material";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
-
 const GlobalLoading = () => {
-    const { globalLoading} = useSelector((state) => state.globalLoading);
-    
-    const [isLoading, setIsLoading] = useState(true);
-    
-    useEffect(() => {
-        if (globalLoading){
-            setIsLoading(true)
-        } else {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 1000);
-        }
-    }, [globalLoading]);
+  const { globalLoading } = useSelector((state) => state.globalLoading);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (globalLoading) {
+      setIsLoading(true);
+    } else {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
+    }
+  }, [globalLoading]);
+
 
   return (
     <>
@@ -43,7 +42,7 @@ const GlobalLoading = () => {
         </Box>
       </Paper>
     </>
-  )
-}
+  );
+};
 
-export default GlobalLoading
+export default GlobalLoading;

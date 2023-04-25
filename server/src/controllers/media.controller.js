@@ -1,89 +1,90 @@
 import responseHandler from "../handlers/response.handler.js";
-import tmdbApi from "../tmdb/tmdb.api.js"
+import tmdbApi from "../tmdb/tmdb.api.js";
 import userModel from "../models/user.model.js";
-import favoriteModel from "../models/favorite.model.js"
+import favoriteModel from "../models/favorite.model.js";
 import reviewModel from "../models/review.model.js";
-import tokenMiddlerware from "../middlewares/token.middlewares.js";
+import tokenMiddlerware from "../middlewares/token.middleware.js";
 
 const getList = async (req, res) => {
-    try {
-        const { page } = req.query;
-        const { mediaType, mediaCategory } = req.params;
+  try {
+    const { page } = req.query;
+    const { mediaType, mediaCategory } = req.params;
 
-        const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page});
+    const response = await tmdbApi.mediaList({ mediaType, mediaCategory, page });
 
-        return responseHandler.ok(res, response);
-    } catch  {
-        responseHandler.error(res);
-    }
+    return responseHandler.ok(res, response);
+  } catch {
+    responseHandler.error(res);
+  }
 };
 
 const getGenres = async (req, res) => {
-    try {
-        const { mediaType } = req.params;
-        const response = await tmdbApi.mediaGenres({ mediaType});
+  try {
+    const { mediaType } = req.params;
 
-        return responseHandler.ok(res, response);
-    } catch  {
-        responseHandler.error(res);
-        
-    }
+    const response = await tmdbApi.mediaGenres({ mediaType });
+
+    return responseHandler.ok(res, response);
+  } catch {
+    responseHandler.error(res);
+  }
 };
 
 const search = async (req, res) => {
-    try {
-        const { mediaType } = req.params;
-        const { query, page } = req.query;
+  try {
+    const { mediaType } = req.params;
+    const { query, page } = req.query;
 
-        const response = await tmdbApi.mediaSearch({ 
-            query,
-            page,
-            mediaType : mediaType === "people" ? "person" : mediaType
-        });
+    const response = await tmdbApi.mediaSearch({
+      query,
+      page,
+      mediaType: mediaType === "people" ? "person" : mediaType
+    });
 
-        return responseHandler.ok(res, response);
-    } catch  {
-        responseHandler.error(res);
-        
-    }
+    responseHandler.ok(res, response);
+  } catch {
+    responseHandler.error(res);
+  }
 };
 
-const getDetial = async (req, res) => {
-    try {
-        const { mediaType, mediaId } = req.params;
+const getDetail = async (req, res) => {
+  try {
+    const { mediaType, mediaId } = req.params;
 
-        const media = await tmdbApi.mediaSearch({ mediaType, mediaId });
+    const params = { mediaType, mediaId };
 
-        media.credits = await tmdbApi.mediaCredits({ mediaType, mediaId });
+    const media = await tmdbApi.mediaDetail(params);
 
-        const videos = await tmdbApi.mediaVideos({ mediaType, mediaId });
+    media.credits = await tmdbApi.mediaCredits(params);
 
-        media.videos =  videos;
+    const videos = await tmdbApi.mediaVideos(params);
 
-        const recommend = await tmdbApi.mediaRecommend({ mediaType, mediaId });
+    media.videos = videos;
 
-        media.recommend = recommend.results;
-        
-        media.images = await tmdbApi.mediaImages({ mediaType, mediaId });
+    const recommend = await tmdbApi.mediaRecommend(params);
 
-        const tokenDecoded = tokenMiddlerware.tokenDecode(req);
-        
-        if ( tokenDecoded) {
-            const user = await userModel.findById(tokenDecoded.data);
+    media.recommend = recommend.results;
 
-            if (user) {
-                const isFavorite = await favoriteModel.findOne({ user: user.id, mediaId });
-                media.isFavorite = isFavorite !== null;
-            }
-        }
+    media.images = await tmdbApi.mediaImages(params);
 
-        media.reviews = await reviewModel.find({ mediaId}).populate("user").sort("-createdAt");
+    const tokenDecoded = tokenMiddlerware.tokenDecode(req);
 
-        responseHandler.ok(res, media);
-    } catch  {
-        responseHandler.error(res);
-        
+    if (tokenDecoded) {
+      const user = await userModel.findById(tokenDecoded.data);
+
+      if (user) {
+        const isFavorite = await favoriteModel.findOne({ user: user.id, mediaId });
+        media.isFavorite = isFavorite !== null;
+      }
     }
+
+    media.reviews = await reviewModel.find({ mediaId }).populate("user").sort("-createdAt");
+
+    responseHandler.ok(res, media);
+  } catch (e) {
+    console.log(e);
+    responseHandler.error(res);
+  }
 };
 
-export default { getList, getGenres, search, getDetial }; 
+export default { getList, getGenres, search, getDetail };

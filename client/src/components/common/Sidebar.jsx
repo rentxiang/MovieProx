@@ -8,7 +8,7 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 
 import { themeModes } from "../../configs/theme.configs";
-import { setThemeMode } from "../../redux/features/themeModelSlice.js";
+import { setThemeMode } from "../../redux/features/themeModelSlice";
 
 const Sidebar = ({ open, toggleSidebar }) => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
         </Stack>
       </Toolbar>
       <List sx={{ paddingX: "30px" }}>
-        <Typography variant="h6" marginBottom="5px">MENU</Typography>
+        <Typography variant="h6" marginBottom="20px">MENU</Typography>
         {menuConfigs.main.map((item, index) => (
           <ListItemButton
             key={index}
@@ -74,7 +74,7 @@ const Sidebar = ({ open, toggleSidebar }) => {
           ))}
         </>)}
 
-        <Typography variant="h6" marginBottom="5px">THEME</Typography>
+        <Typography variant="h6" marginBottom="20px">THEME</Typography>
         <ListItemButton onClick={onSwitchTheme}>
           <ListItemIcon>
             {themeMode === themeModes.dark && <DarkModeOutlinedIcon />}

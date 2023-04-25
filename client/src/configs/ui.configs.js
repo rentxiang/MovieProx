@@ -1,47 +1,45 @@
-import { display } from "@mui/system";
-
 const uiConfigs = {
-    style: {
-        gradientBgImage: {
-            dark: {
-                backgroundImage: "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)"
-            },
-            light: {
-                backgroundImage: "linear-gradient(to top, rgba(245,245,245,1), rgba(0,0,0,0)"
-            }
-        },
-        horizontalGradientBgImage: {
-            dark: {
-                backgroundImage: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0)"
-            },
-            light: {
-                backgroundImage: "linear-gradient(to right, rgba(245,245,245,1), rgba(0,0,0,0)"
-            }
-        },
-        typolines: (lines, textAlign) => ({
-            textAlign: textAlign || "justfy",
-            display: "-webkit-box",
-            overflow: "hidden",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: lines
-        }),
-        mainContent: {
-            maxWidth: "1366px",
-            margin: "auto",
-            padding: 2
-        },
-        backgroundImage: (imgPath) => ({
-            position: "relative",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundColor: "darkgrey",
-            backgroundImage: `url(${imgPath})`
-        })
+  style: {
+    gradientBgImage: {
+      dark: {
+        backgroundImage: "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0))"
+      },
+      light: {
+        backgroundImage: "linear-gradient(to top, rgba(245,245,245,1), rgba(0,0,0,0))"
+      }
     },
-    size: {
-        sidebarWith: "300px",
-        contentMaxWidth: "1366px"
-    }
+    horizontalGradientBgImage: {
+      dark: {
+        backgroundImage: "linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0))"
+      },
+      light: {
+        backgroundImage: "linear-gradient(to right, rgba(245,245,245,1), rgba(0,0,0,0))"
+      }
+    },
+    typoLines: (lines, textAlign) => ({
+      textAlign: textAlign || "justify",
+      display: "-webkit-box",
+      overflow: "hidden",
+      WebkitBoxOrient: "vertical",
+      WebkitLineClamp: lines
+    }),
+    mainContent: {
+      maxWidth: "1366px",
+      margin: "auto",
+      padding: 2
+    },
+    backgroundImage: (imgPath) => ({
+      position: "relative",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundColor: "darkgrey",
+      backgroundImage: `url(${imgPath})`
+    })
+  },
+  size: {
+    sidebarWith: "300px",
+    contentMaxWidth: "1366px"
+  }
 };
 
 export default uiConfigs;
