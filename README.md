@@ -1,6 +1,7 @@
 ## MovieProx 
 - A Fullstack Responsive Movie Website with MERN stack and Themoviedb API.
-- Hosted with vercel at : https://movieprox.vercel.app/
+    - Hosted with vercel at : https://movieprox.vercel.app/
+
 What are the features of this project?
 
 - Sign up / Sign in
