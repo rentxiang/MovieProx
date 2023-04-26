@@ -70,6 +70,7 @@ const MediaItem = ({ media, mediaType }) => {
               variant="contained"
               startIcon={<PlayArrowIcon />}
               sx={{
+                // outlinedstoken: "1px",
                 display: { xs: "none", md: "flex" },
                 opacity: 0,
                 transition: "all 0.3s ease",

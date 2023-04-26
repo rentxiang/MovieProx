@@ -16,6 +16,7 @@ const Footer = () => {
           sx={{ height: "max-content" }}
         >
           <Logo />
+          <h5>Powered By Tianxiang Ren</h5>
           <Box>
             {menuConfigs.main.map((item, index) => (
               <Button
