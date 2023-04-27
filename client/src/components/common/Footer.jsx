@@ -4,6 +4,7 @@ import Container from './Container';
 import Logo from './Logo';
 import menuConfigs from "../../configs/menu.configs";
 import { Link } from "react-router-dom";
+import SocialFollow from './SocialFollow';
 
 const Footer = () => {
   return (
@@ -17,6 +18,8 @@ const Footer = () => {
         >
           <Logo />
           <h5>Powered By Tianxiang Ren</h5>
+          <SocialFollow />
+
           <Box>
             {menuConfigs.main.map((item, index) => (
               <Button
