@@ -98,7 +98,7 @@ const Topbar = () => {
             {/* user menu */}
             <Stack spacing={3} direction="row" alignItems="center">
             <FaceIcon/>
-              {!user && <FaceIcon/> && <Button
+              {!user && <FaceIcon style={{ paddingRight: '10px' }}/> && <Button
                 variant="contained"
                 onClick={() => dispatch(setAuthModalOpen(true))}
               >
