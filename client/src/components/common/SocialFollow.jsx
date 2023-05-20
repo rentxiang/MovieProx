@@ -14,7 +14,7 @@ const iconstyle = {
   margin: "0 1rem",
   transition: "transform 250ms",
   display: "inline-block",
-  color: "white"
+  color: "grey"
   
 }
 export default function SocialFollow() {
