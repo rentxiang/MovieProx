@@ -5,6 +5,7 @@ import Logo from './Logo';
 import menuConfigs from "../../configs/menu.configs";
 import { Link } from "react-router-dom";
 import SocialFollow from './SocialFollow';
+import BoltIcon from '@mui/icons-material/Bolt';
 
 const Footer = () => {
   return (
@@ -17,7 +18,8 @@ const Footer = () => {
           sx={{ height: "max-content" }}
         >
           <Logo />
-          <h5>Powered By Tianxiang Ren</h5>
+          
+          <h6>© Powered By Tianxiang Ren</h6>
           <SocialFollow />
 
           <Box>

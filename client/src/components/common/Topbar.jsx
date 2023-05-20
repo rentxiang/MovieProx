@@ -12,6 +12,7 @@ import { setThemeMode } from "../../redux/features/themeModelSlice";
 import Logo from "./Logo";
 import UserMenu from "./UserMenu";
 import Sidebar from "./Sidebar";
+import FaceIcon from '@mui/icons-material/Face';
 
 const ScrollAppBar = ({ children, window }) => {
   const { themeMode } = useSelector((state) => state.themeMode);
@@ -96,7 +97,8 @@ const Topbar = () => {
 
             {/* user menu */}
             <Stack spacing={3} direction="row" alignItems="center">
-              {!user && <Button
+            <FaceIcon/>
+              {!user && <FaceIcon/> && <Button
                 variant="contained"
                 onClick={() => dispatch(setAuthModalOpen(true))}
               >
