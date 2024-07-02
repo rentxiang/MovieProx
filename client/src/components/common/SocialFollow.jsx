@@ -21,9 +21,6 @@ export default function SocialFollow() {
   return (
     
     <div class="social-container">
-      <a href="https://www.linkedin.com/in/rentxiang/" className="linkedin social">
-        <FontAwesomeIcon icon={faLinkedin} size="2x" style={iconstyle}/>
-      </a>
       <a href="https://github.com/rentxiang" className="github social">
         <FontAwesomeIcon icon={faGithub} size="2x" style={iconstyle}/>
       </a>

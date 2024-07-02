@@ -19,7 +19,7 @@ const Footer = () => {
         >
           <Logo />
           
-          <h6>© Powered By Tianxiang Ren</h6>
+          <h6>© Powered By Dylan Ren</h6>
           <SocialFollow />
 
           <Box>
